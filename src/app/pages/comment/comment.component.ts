@@ -14,11 +14,12 @@ export class CommentComponent implements OnInit {
  comments: DiaryComment[] = [];
  message;
  commentlength;
+ subscription
 
   constructor(public data: DataService) { };
 
   ngOnInit() {
-    this.data.getCommentsList(this.diaryKey).subscribe(data=>{
+   this.subscription= this.data.getCommentsList(this.diaryKey).subscribe(data=>{
         this.comments = data;
         this.commentlength = data.length.toString()
     });
@@ -33,6 +34,8 @@ export class CommentComponent implements OnInit {
      this.message = "";
   };
 
-
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
+  }
 
 }

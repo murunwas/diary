@@ -36,12 +36,18 @@ export class HomeComponent implements OnInit {
 
   Add() {
     this.isSubmit = true;
-    this.data.AddDiary(this.postDiary, this.file).then(res => {
+   if (this.postDiary.title == "") {
+     this.isSubmit = false;
+     alert("add message please");
+     return;
+   } else {
+      this.data.AddDiary(this.postDiary, this.file).then(res => {
       if (res) {
         this.isSubmit = false;
         this.postDiary.title = '';
       }
     });
+   }
 
   }
 
@@ -63,7 +69,7 @@ export class HomeComponent implements OnInit {
 
   handleAddComment(ev:DiaryComment){
     if (ev.message==null) {
-      alert("eeeee");
+      alert("add Comment please");
     } else {
      
      this.data.createComment(ev);

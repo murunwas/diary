@@ -1,12 +1,11 @@
-<div id="{{index}}" style="display:none">
-  <hr>
+<!--<div id="{{index}}" style="display:none">
   <ul class="w3-ul w3-card-4">
     <li class="w3-padding-16" *ngFor="let item of comments">
       <img [src]="item.avatar" class="w3-left w3-circle w3-margin-right" style="width:50px">
-      <span>{{item.user}}</span><br>
+      <span>{{item.user}}</span>  <small>{{item.date|amTimeAgo}}</small><br>
       <span class="p">{{item.message}}</span>
 
-      <small class="w3-right">{{item.date|amTimeAgo}}</small>
+     
     </li>
   </ul>
   <br/>
@@ -17,4 +16,49 @@
     <div class="w3-col m2" (click)="addComment()"><button class="w3-button"><i class="fa fa-paper-plane" aria-hidden="true" ></i></button></div>
   </div>
   <br/>
+</div>-->
+
+
+<div id="{{index}}" style="display:none"> 
+  <hr/>
+<article class="media" *ngFor="let item of comments">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img [src]="item.avatar">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <strong>{{item.user}}</strong>
+        <br>
+        {{item.message}}
+        <br>
+        <small>  {{item.date|amTimeAgo}}</small>
+      </p>
+    </div>
+  </div>
+</article>
+
+
+<article class="media">
+  <figure class="media-left">
+    <p class="image is-64x64">
+      <img [src]="data.avatar">
+    </p>
+  </figure>
+  <div class="media-content">
+    <div class="field">
+      <p class="control">
+        <textarea class="textarea" placeholder="Add a comment..." [(ngModel)]="message" name="message"></textarea>
+      </p>
+    </div>
+    <div class="field" (click)="addComment()">
+      <p class="control">
+        <button class="button">Post comment</button>
+      </p>
+    </div>
+  </div>
+</article>
+
 </div>

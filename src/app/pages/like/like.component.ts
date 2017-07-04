@@ -9,11 +9,12 @@ import { sum, values, size } from 'lodash';
  <p class="w3-left" *ngIf="userVote; then unfollowButton else followButton"></p>
 
 <ng-template #followButton>
-<button (click)="like()" class="w3-button w3-white w3-border"><b><i class="fa fa-heart" aria-hidden="true" ></i> {{voteCount}}</b></button>
+<small (click)="like()"><a><i class="fa fa-heart" aria-hidden="true" ></i> </a>  {{voteCount}}</small>
+
 </ng-template>
 
 <ng-template #unfollowButton>
-  <button (click)="dislike()" class="w3-button w3-white w3-border"><b><i class="fa fa-heart" aria-hidden="true" style="color:red;"></i> {{voteCount}}</b></button>
+<small (click)="dislike()"><a><i class="fa fa-heart" aria-hidden="true" style="color:red;"></i> </a>  {{voteCount}}</small>
 </ng-template>
   `,
   styles: []

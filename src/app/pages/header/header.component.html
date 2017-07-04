@@ -1,4 +1,4 @@
-<div class="w3-top">
+<!--<div class="w3-top">
  <div class="w3-bar w3-theme-d2 w3-left-align w3-large">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
   <a [routerLink]="['/']" class="w3-bar-item w3-button w3-padding-large w3-theme-d4"><i class="fa fa-home w3-margin-right"></i>Our Diary</a>
@@ -16,8 +16,38 @@
  </div>
 </div>
 
-<!-- Navbar on small screens -->
+
 <div id="navDemo" class="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large">
   <a [routerLink]="['/profile']" class="w3-bar-item w3-button w3-padding-large">Profile </a>
   <a (click)="data.logout()" [routerLink]="['/login']"  class="w3-bar-item w3-button w3-padding-large">logout</a>
-</div>
+</div>-->
+
+
+
+
+
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <a class="nav-item" [routerLink]="['/']">
+        <img src="assets/logo.png" alt="cenggy logo">
+      </a>
+      <a class="nav-item is-tab is-hidden-mobile is-active" [routerLink]="['/']">Home</a>
+    </div>
+    <span class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+    <div class="nav-right nav-menu">
+      <a class="nav-item is-tab is-hidden-tablet is-active"[routerLink]="['/']">Home</a>
+      <a class="nav-item is-tab" [routerLink]="['/profile']">
+        <figure class="image is-16x16" style="margin-right: 16px;">
+          <img [src]="data.avatar">
+        </figure>
+        Profile
+      </a>
+      <a class="nav-item is-tab" (click)="data.logout()" [routerLink]="['/login']">Log out</a>
+    </div>
+  </div>
+</nav>
