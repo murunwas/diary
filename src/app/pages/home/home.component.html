@@ -1,0 +1,117 @@
+<app-header> </app-header>
+
+<!-- Page Container -->
+<div class="w3-container w3-content" style="max-width:1400px;margin-top:80px">
+  <!-- The Grid -->
+  <div class="w3-row">
+    <!-- Left Column -->
+    <div class="w3-col m3 w3-hide-small prof">
+      <!-- Profile -->
+      <div class="w3-card-2 w3-round w3-white ">
+        <div class="w3-container">
+          <h4 class="w3-center">My Profile</h4>
+          <p class="w3-center"><img [src]="data.avatar" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
+          <hr>
+          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> {{data.DisplayName}}</p>
+        </div>
+      </div>
+
+
+      <!-- End Left Column -->
+    </div>
+
+    <!-- Middle Column -->
+    <div class="w3-col m7">
+
+      <div class="w3-row-padding" *ngIf="!isSubmit;else submitting">
+        <div class="w3-col m12">
+          <div class="w3-card-2 w3-round w3-white">
+            <div class="w3-container w3-padding">
+              <h6 class="w3-opacity">Write a diary...</h6>
+              <textarea rows="2" cols="6" class="w3-input w3-border" [(ngModel)]="postDiary.title" name="title"></textarea>
+              <label class="w3-button"><i class="fa fa-upload" aria-hidden="true" ></i> <input type="file" (change)="fileChange($event)" /></label>
+              <label class="w3-button" (click)="Add()"><i class="fa fa-paper-plane" aria-hidden="true" ></i></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="pagedItems?.length>0; else loading">
+        <div class="w3-container data w3-card-2 w3-white w3-round w3-margin" *ngFor="let item of pagedItems; let i = index"><br>
+          <img [src]="item.avatar" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px" *ngIf="item.avatar">
+          <span class="w3-right w3-opacity">{{item.date | amTimeAgo}}</span>
+          <h4>{{item.user}}</h4>
+          <hr class="w3-clear">
+          <p>{{item.title}}</p>
+          <div class="w3-row-padding" style="margin:0 -16px" *ngIf="item.img">
+            <div class="w3-full">
+              <img [src]="item.img" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
+            </div>
+          </div>
+          <p class="w3-left"><like [itemId]='item.$key' [userId]='data.currentUserId'></like></p>
+          <p class="w3-right"><button class="w3-button w3-black" (click)=open(i)><b>Comments  </b> <span class="w3-tag w3-white">{{me.commentlength}}</span></button></p>
+          <p class="w3-clear"></p>
+          <app-comment [index]="i" [diaryKey]="item.$key" (writeComment)="handleAddComment($event)" #me> </app-comment>
+
+        </div>
+      </div>
+
+
+      <div class="w3-bar w3-border w3-round" *ngIf="pager.pages && pager.pages.length">
+        <a [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(1)" class="w3-button w3-bar-item">&laquo;</a>
+        <a [ngClass]="{disabled:pager.currentPage === 1}" (click)="setPage(pager.currentPage - 1)" class="w3-button w3-bar-item">Previous</a>
+
+        <a *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}" (click)="setPage(page)" class="w3-button w3-bar-item">{{page}}</a>
+
+        <a [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.currentPage + 1)" class="w3-button w3-bar-item">next</a>
+        <a [ngClass]="{disabled:pager.currentPage === pager.totalPages}" (click)="setPage(pager.totalPages)" class="w3-button w3-bar-item">&raquo;</a>
+      </div>
+
+
+
+
+
+      <ng-template #loading>
+        <div class="w3-container w3-center">
+          <p><i class="fa fa-spinner w3-spin" style="font-size:64px"></i></p>
+          <p>....loading your Diaries :)</p>
+        </div>
+      </ng-template>
+
+      <ng-template #submitting>
+        <div class="w3-container w3-center">
+          <p><i class="fa fa-spinner w3-spin" style="font-size:64px"></i></p>
+          <p>....submitting your Diary :)</p>
+        </div>
+      </ng-template>
+
+
+      <!-- End Middle Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-col m2">
+      <div class="w3-card-2 w3-round w3-white">
+        <ng2-adsense></ng2-adsense>
+      </div>
+
+      <br>
+
+      <div class="w3-card-2 w3-round w3-white">
+        <ng2-adsense></ng2-adsense>
+      </div>
+      <br>
+
+      <div class="w3-card-2 w3-round w3-white">
+        <ng2-adsense></ng2-adsense>
+      </div>
+
+      <!-- End Right Column -->
+    </div>
+
+    <!-- End Grid -->
+  </div>
+
+  <!-- End Page Container -->
+</div>

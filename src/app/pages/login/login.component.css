@@ -1,0 +1,17 @@
+.bgimg {
+    background-image: url('https://static.pexels.com/photos/261677/pexels-photo-261677.jpeg');
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bgimg p {
+    font-family: 'Satisfy', cursive;
+    font-size: 200%;
+}
+
+.bgimg .ww {
+    font-family: 'Satisfy', cursive;
+}

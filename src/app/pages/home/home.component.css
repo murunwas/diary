@@ -1,0 +1,21 @@
+.data p{
+    font-family: 'Marmelad', sans-serif;
+}
+
+.data span{
+    font-family: 'Marmelad', sans-serif;
+}
+
+.data h4{
+    font-family: 'Satisfy', cursive;
+}
+
+.prof{
+  font-family: 'Marmelad', sans-serif;  
+}
+
+input{
+    visibility: hidden;
+    width: 2px;
+    height: 2px;
+}

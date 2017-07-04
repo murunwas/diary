@@ -1,0 +1,20 @@
+<div id="{{index}}" style="display:none">
+  <hr>
+  <ul class="w3-ul w3-card-4">
+    <li class="w3-padding-16" *ngFor="let item of comments">
+      <img [src]="item.avatar" class="w3-left w3-circle w3-margin-right" style="width:50px">
+      <span>{{item.user}}</span><br>
+      <span class="p">{{item.message}}</span>
+
+      <small class="w3-right">{{item.date|amTimeAgo}}</small>
+    </li>
+  </ul>
+  <br/>
+  <div class="w3-row-padding">
+    <div class="w3-col m10">
+      <textarea rows="1" cols="2" class="w3-input w3-border" [(ngModel)]="message" name="message"></textarea>
+    </div>
+    <div class="w3-col m2" (click)="addComment()"><button class="w3-button"><i class="fa fa-paper-plane" aria-hidden="true" ></i></button></div>
+  </div>
+  <br/>
+</div>
